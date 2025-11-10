@@ -2,8 +2,7 @@
         let currentStep = 1;
         let cnpjData = null;
         let isProcessing = false;
-        let countdownInterval;
-        const INITIAL_TIME_SECONDS = 226; // 3 minutos e 46 segundos
+        // Variáveis de controle de estado (mantidas)
 
         // ConfiguraÃ§Ãµes da API CNPJjÃ¡
         const API_BASE_URL = 'https://api.cnpja.com/office'; // Mantido, mas o endpoint correto Ã© 'https://api.cnpja.com/office/{cnpj}'
@@ -124,7 +123,6 @@ if (!response.ok || data.error) {
                 cnpjInfoDisplay.style.display = 'block';
                 waitingPayment.style.display = 'block';
                 showSuccessNotification('CNPJ encontrado com sucesso!');
-                startCountdown();
 
                 
 
@@ -174,36 +172,7 @@ const infoItems = [
             if (paymentCnpjInfoGrid) paymentCnpjInfoGrid.innerHTML = htmlContent;
         }
 
-        // ===== CRONÔMETRO DE URGÊNCIA =====
-        function formatTime(totalSeconds) {
-            const minutes = Math.floor(totalSeconds / 60);
-            const seconds = totalSeconds % 60;
-            return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-        }
-
-        function startCountdown() {
-            const timerElement = document.getElementById('countdownTimer');
-            if (!timerElement) return;
-
-            // Limpa qualquer cronômetro anterior
-            if (countdownInterval) {
-                clearInterval(countdownInterval);
-            }
-
-            let timeLeft = INITIAL_TIME_SECONDS;
-            timerElement.textContent = formatTime(timeLeft);
-
-            countdownInterval = setInterval(() => {
-                timeLeft--;
-                timerElement.textContent = formatTime(timeLeft);
-
-                if (timeLeft <= 0) {
-                    clearInterval(countdownInterval);
-                    // Opcional: Adicionar lógica para o que acontece quando o tempo acaba (ex: desabilitar botão, mostrar mensagem)
-                    timerElement.textContent = '00:00';
-                }
-            }, 1000);
-        }
+        // Lógica de cronômetro removida conforme solicitação do usuário.
 
         function showCNPJError(message) {
             const cnpjInput = document.getElementById('cnpj');
