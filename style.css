@@ -837,6 +837,16 @@
             box-shadow: var(--shadow-md);
         }
 
+        /* Ajuste para Mobile: centraliza o conteúdo */
+        @media (max-width: 767px) {
+            .payment-alert-content {
+                text-align: center;
+            }
+            .payment-alert-header {
+                justify-content: center;
+            }
+        }
+
         .payment-alert-header {
             display: flex;
             align-items: center;
@@ -862,10 +872,26 @@
             line-height: 1.5;
         }
 
-        .payment-alert-subtitle strong {
-            font-size: 16px;
-            color: var(--error-color); /* Destaca o cronômetro em vermelho */
-            font-weight: 800;
+        .payment-alert-subtitle .timer-display {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        /* Estilo para o Spinner Circular */
+        .spinner-circular {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 3px solid var(--error-color);
+            border-top: 3px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
 
