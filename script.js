@@ -147,7 +147,7 @@ if (!response.ok || data.error) {
 
 const infoItems = [
 { label: 'CNPJ', value: formattedCnpj || data.cnpj || '-' },
-					                { label: 'SituaÃ§Ã£o Cadastral', value: 'Pendente' },
+					                { label: 'SituaÃ§Ã£o Cadastral', value: '<span class="status-pending">Pendente</span>' },
 				                // Removido: Data da SituaÃ§Ã£o
 				                { label: 'RazÃ£o Social', value: data.company?.name || data.name || '-' },
 				                // Removido: Nome Fantasia
