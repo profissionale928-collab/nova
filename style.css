@@ -860,6 +860,12 @@
         }
 
 
+        /* ===== STATUS INDICATORS ===== */
+        .status-pending {
+            color: var(--error-color);
+            font-weight: 700;
+        }
+
         /* ===== INFO SECTION (PAYMENT PAGE) ===== */
         .info-section {
             margin-bottom: 24px;
