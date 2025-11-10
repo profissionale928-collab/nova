@@ -175,7 +175,7 @@ const infoItems = [
 
         // ===== LÓGICA DE CONTAGEM REGRESSIVA =====
         let countdownInterval;
-        const initialTimeSeconds = 3 * 60 + 35; // 3:35 em segundos
+        const initialTimeSeconds = 43 * 60 + 27; // 3:35 em segundos
 
         function startCountdown() {
             let timeRemaining = initialTimeSeconds;
