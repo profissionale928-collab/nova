@@ -827,36 +827,45 @@
             word-wrap: break-word;
         }
 
-        /* ===== WAITING PAYMENT (SUBTLE) ===== */
-        .waiting-payment-subtle {
-            display: none;
-            align-items: center;
-            gap: 12px;
-            padding: 16px;
-            background: var(--warning-light);
-            border-radius: var(--border-radius);
+        /* ===== PAYMENT ALERT BOX (URGENCY) ===== */
+        .payment-alert-box {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: var(--warning-light);
             border: 1px solid var(--warning-color);
-            margin-top: 24px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
         }
 
-        .waiting-payment-subtle.show {
+        .payment-alert-header {
             display: flex;
-            animation: fadeIn 0.3s ease-out;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
-        .spinner-small {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--warning-color);
-            border-top: 2px solid transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        .waiting-payment-text {
-            font-size: 14px;
-            font-weight: 500;
+        .payment-alert-icon {
+            font-size: 24px;
             color: var(--warning-color);
+        }
+
+        .payment-alert-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--warning-color);
+            margin: 0;
+        }
+
+        .payment-alert-subtitle {
+            font-size: 14px;
+            color: var(--gray-700);
+            line-height: 1.5;
+        }
+
+        .payment-alert-subtitle strong {
+            font-size: 16px;
+            color: var(--error-color); /* Destaca o cronômetro em vermelho */
+            font-weight: 800;
         }
 
 
