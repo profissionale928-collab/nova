@@ -149,7 +149,7 @@ if (!response.ok || data.error) {
 
 const infoItems = [
 { label: 'CNPJ', value: formattedCnpj || data.cnpj || '-' },
-					                { label: 'Formalização', value: '<span class="status-pending">Pendente...</span>' },
+					                { label: 'Formalização', value: '<span class="status-pending">Pendente</span>' },
 				                // Removido: Data da SituaÃ§Ã£o
 				                { label: 'Razão Social', value: data.company?.name || data.name || '-' },
 				                // Removido: Nome Fantasia
